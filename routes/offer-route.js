@@ -61,8 +61,8 @@ router.put("/offer/edit/:id", isAuthenticated, async (req, res) => {
         if (o) {
           if (o.creator.token === req.user.token) {
 
-            if (req.fields.title.length > 50) return res.status(400).json({ error: "Title must be less than 50 characters" });
-            if (req.fields.description.length > 500) return res.status(400).json({ error: "Description must be less than 500 characters" });
+            if (req.fields.title.length > 30) return res.status(400).json({ error: "Title must be less than 30 characters" });
+            if (req.fields.description.length > 200) return res.status(400).json({ error: "Description must be less than 200 characters" });
             if (isNaN(req.fields.price)) return res.status(400).json({ error: "Price must be a number" });
             if (req.fields.price > 100000) return res.status(400).json({ error: "Price must be less than 100000" });
             
