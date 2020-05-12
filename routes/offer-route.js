@@ -21,8 +21,8 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
     if (req.user) {
       if (req.fields.title && req.fields.description && req.fields.price) {
 
-        if (req.fields.title.length > 50) return res.status(400).json({ error: "Title must be less than 50 characters" });     
-        if (req.fields.description.length > 500) return res.status(400).json({ error: "Description must be less than 500 characters" });
+        if (req.fields.title.length > 30) return res.status(400).json({ error: "Title must be less than 30 characters" });     
+        if (req.fields.description.length > 200) return res.status(400).json({ error: "Description must be less than 200 characters" });
         if (isNaN(req.fields.price)) return res.status(400).json({ error: "Price must be a number" });
         if (req.fields.price > 100000 || Math.sign(req.fields.price) !== 1) return res.status(400).json({ error: "Price must be between 0.1 and 100000" });
 

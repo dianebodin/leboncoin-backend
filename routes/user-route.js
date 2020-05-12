@@ -13,7 +13,7 @@ router.post("/user/sign_up", async (req, res) => {
   try {
     if (req.fields.email && req.fields.username && req.fields.password) { //&& req.fields.phone
       if (req.fields.email.trim().length > 0 && req.fields.username.trim().length > 0) { //&& req.fields.phone.trim().length > 0
-        if(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(req.fields.email)){ //format mail correct
+        if (/^[a-zA-Z0-9.-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(req.fields.email)) { //format mail correct
           const u_email = await User.findOne({ email: req.fields.email }); //doublon email
           if (!u_email) {
 

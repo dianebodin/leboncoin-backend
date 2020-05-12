@@ -1,26 +1,19 @@
 const express = require("express");
 const router = express.Router();
-/*
-const createStripe = require("stripe");
-const stripe = createStripe(process.env.STRIPE_API_SECRET);
-*/
+const stripe = require("stripe")(process.env.STRIPE_API_SECRET);
 
-router.post("/payment", async (req, res) => {
+
+router.post("/payment", async (req, res) => { 
   try {
-
-    /*
-    let { status } = await stripe.charges.create({
+    //console.log(req.fields.stripeToken); //token créé depuis l'api stripe
+    const response = await stripe.charges.create({
       amount: req.fields.amount,
       currency: "eur",
       description: `Paiement leboncoin pour: ${req.fields.title}`,
-      source: req.fields.token
+      source: req.fields.stripeToken
     });
-
-    //le paiement a fonctionné - mise à jour de la bdd - réponse au client pour afficher le statut
-    res.json({ status });
-
-    */
-
+    return res.status(200).json({ response });
+    
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

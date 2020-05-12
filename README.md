@@ -1,6 +1,6 @@
 # leboncoin-backend
   
-> Node.js et MongoDB
+> Express et MongoDB
   
   
 #### Variables d'environnement à compléter
