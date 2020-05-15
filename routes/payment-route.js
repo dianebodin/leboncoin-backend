@@ -5,7 +5,6 @@ const stripe = require("stripe")(process.env.STRIPE_API_SECRET);
 
 router.post("/payment", async (req, res) => { 
   try {
-    //console.log(req.fields.stripeToken); //token créé depuis l'api stripe
     const response = await stripe.charges.create({
       amount: req.fields.amount,
       currency: "eur",
