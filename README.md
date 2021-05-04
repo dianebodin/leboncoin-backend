@@ -1,3 +1,3 @@
 # leboncoin-backend
   
-> Express.js, MongoDB
+> Express.js, MongoDB, Stripe
